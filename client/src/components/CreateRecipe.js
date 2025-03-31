@@ -33,55 +33,77 @@ const CreateRecipePage = () => {
 
   return (
     <div className="container">
-      <h1>Create A Recipe</h1>
-      <form>
-        <Form.Group>
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            {...register("title", { required: true, maxLength: 25 })}
-          />
-        </Form.Group>
-        {errors.title && (
-          <p style={{ color: "red" }}>
-            <small>Title is required</small>
+      <div className="form" style={{ maxWidth: "800px" }}>
+        <div className="text-center mb-4">
+          <i
+            className="bi bi-journal-plus text-primary"
+            style={{ fontSize: "3rem" }}
+          ></i>
+          <h1>Create A Recipe</h1>
+          <p className="text-muted">
+            Share your culinary masterpiece with the world
           </p>
-        )}
-        {errors.title?.type === "maxLength" && (
-          <p style={{ color: "red" }}>
-            <small>Title cannot exceed 25 characters</small>
-          </p>
-        )}
-        <br />
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={5}
-            {...register("description", { required: true, maxLength: 500 })}
-          />
-        </Form.Group>
-        {errors.description && (
-          <p style={{ color: "red" }}>
-            <small>Description is required</small>
-          </p>
-        )}
-        {errors.description?.type === "maxLength" && (
-          <p style={{ color: "red" }}>
-            <small>Description cannot exceed 500 characters</small>
-          </p>
-        )}
-        <br />
-        <Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={handleSubmit(submitRecipe)}
-          >
-            Create Recipe
-          </Button>
-        </Form.Group>
-      </form>
+        </div>
+
+        <form>
+          <Form.Group className="mb-4">
+            <Form.Label>
+              <i className="bi bi-tag me-2"></i>Recipe Title
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Give your recipe a catchy name"
+              className="form-control-lg"
+              {...register("title", { required: true, maxLength: 25 })}
+            />
+          </Form.Group>
+          {errors.title && (
+            <p style={{ color: "red" }}>
+              <small>Title is required</small>
+            </p>
+          )}
+          {errors.title?.type === "maxLength" && (
+            <p style={{ color: "red" }}>
+              <small>Title cannot exceed 25 characters</small>
+            </p>
+          )}
+
+          <Form.Group className="mb-4">
+            <Form.Label>
+              <i className="bi bi-card-text me-2"></i>Description
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={6}
+              placeholder="Describe your recipe, including preparation steps and cooking tips..."
+              className="form-control-lg"
+              {...register("description", { required: true, maxLength: 500 })}
+            />
+          </Form.Group>
+          {errors.description && (
+            <p style={{ color: "red" }}>
+              <small>Description is required</small>
+            </p>
+          )}
+          {errors.description?.type === "maxLength" && (
+            <p style={{ color: "red" }}>
+              <small>Description cannot exceed 500 characters</small>
+            </p>
+          )}
+
+          <Form.Group className="d-grid gap-2 mt-4">
+            <Button
+              variant="primary"
+              size="lg"
+              type="submit"
+              onClick={handleSubmit(submitRecipe)}
+            >
+              <i className="bi bi-cloud-upload me-2"></i>
+              Create Recipe
+            </Button>
+          </Form.Group>
+        </form>
+      </div>
     </div>
   );
 };

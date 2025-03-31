@@ -48,20 +48,31 @@ const SignupPage = () => {
         {show ? (
           <>
             <Alert variant="success" onClose={() => setShow(false)} dismissible>
-              <p>{serverResposne}</p>
+              <i className="bi bi-check-circle-fill me-2"></i>
+              <p className="mb-0">{serverResposne}</p>
             </Alert>
-            <h1>Sign Up</h1>
           </>
-        ) : (
-          <h1>Sign Up</h1>
-        )}
-        <br />
+        ) : null}
+
+        <div className="text-center mb-4">
+          <i
+            className="bi bi-person-plus-fill text-primary"
+            style={{ fontSize: "3rem" }}
+          ></i>
+          <h1>Create Account</h1>
+          <p className="text-muted">
+            Join our community to create and share recipes
+          </p>
+        </div>
+
         <form>
-          <Form.Group>
-            <Form.Label>Username</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label>
+              <i className="bi bi-person me-2"></i>Username
+            </Form.Label>
             <Form.Control
               type="text"
-              placeholder="Your username"
+              placeholder="Choose a username"
               {...register("username", { required: true, maxLength: 25 })}
             />
             {errors.username && (
@@ -76,12 +87,13 @@ const SignupPage = () => {
             )}
           </Form.Group>
 
-          <br />
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label>
+              <i className="bi bi-envelope me-2"></i>Email
+            </Form.Label>
             <Form.Control
               type="email"
-              placeholder="Your email"
+              placeholder="Your email address"
               {...register("email", { required: true, maxLength: 80 })}
             />
 
@@ -97,12 +109,14 @@ const SignupPage = () => {
               </p>
             )}
           </Form.Group>
-          <br />
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
+
+          <Form.Group className="mb-3">
+            <Form.Label>
+              <i className="bi bi-lock me-2"></i>Password
+            </Form.Label>
             <Form.Control
               type="password"
-              placeholder="Your password"
+              placeholder="Create a password"
               {...register("password", { required: true, minLength: 8 })}
             />
 
@@ -118,12 +132,14 @@ const SignupPage = () => {
               </p>
             )}
           </Form.Group>
-          <br />
-          <Form.Group>
-            <Form.Label>Confirm Password</Form.Label>
+
+          <Form.Group className="mb-4">
+            <Form.Label>
+              <i className="bi bi-lock-fill me-2"></i>Confirm Password
+            </Form.Label>
             <Form.Control
               type="password"
-              placeholder="Your password"
+              placeholder="Confirm your password"
               {...register("confirmPassword", { required: true, minLength: 8 })}
             />
 
@@ -138,22 +154,26 @@ const SignupPage = () => {
               </p>
             )}
           </Form.Group>
-          <br />
-          <Form.Group>
+
+          <Form.Group className="d-grid gap-2">
             <Button
               as="sub"
               variant="primary"
+              size="lg"
               onClick={handleSubmit(submitForm)}
             >
+              <i className="bi bi-person-plus me-2"></i>
               Sign Up
             </Button>
           </Form.Group>
-          <br />
-          <Form.Group>
-            <small>
-              Already have an account?<Link to="/login">Login</Link>
-            </small>
-          </Form.Group>
+
+          <div className="text-center mt-4">
+            <Form.Group>
+              <small className="text-muted">
+                Already have an account? <Link to="/login">Login</Link>
+              </small>
+            </Form.Group>
+          </div>
         </form>
       </div>
     </div>
